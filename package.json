@@ -1,0 +1,27 @@
+{
+  "name": "blnt-adventure-screen",
+  "version": "1.0.0",
+  "description": "A node server using signal-r to track the adventure of the BLNT performance and display it visually in a flow chart",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epstechtheatre/BLNT-Adventure-Screen.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/epstechtheatre/BLNT-Adventure-Screen/issues"
+  },
+  "homepage": "https://github.com/epstechtheatre/BLNT-Adventure-Screen#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-basic-auth": "^1.2.0",
+    "socket.io": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.11"
+  }
+}
