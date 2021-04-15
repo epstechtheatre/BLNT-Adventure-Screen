@@ -1,5 +1,13 @@
 {
     "cSpell.words": [
         "socketio"
+    ],
+    "json.schemas": [
+        {
+            "schema": {
+                "title": "Scene Pathing",
+                "type": "object",
+            }
+        }
     ]
 }

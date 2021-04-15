@@ -15,11 +15,7 @@ export default class ExpressServer {
 
         this.app.set("socketio", this.io);
 
-        this.createIOListener();
-
-        this.app.get("/", function(req, res) {
-            res.send("test")
-        })
+        this.createIOListener();    
     }
 
     private createIOListener() {
@@ -39,13 +35,13 @@ export default class ExpressServer {
         });
     }
 
-    addMiddleware(parentPath: string, ERouter: ExpressRouter): ExpressServer {
-        this.app.use(parentPath, ERouter.router)
+    addRouter(parentPath: string, ExpressRouter: ExpressRouter): ExpressServer {
+        this.app.use(parentPath, ExpressRouter.router)
 
         return this;
     }
 
-    start(port: number): void {
+    startServer(port: number): void {
         this.httpServer.listen(port, () => {
             console.log("App Listening on Port: " + port)
         })
