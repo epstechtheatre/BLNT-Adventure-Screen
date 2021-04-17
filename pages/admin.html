@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>You are an admin. Yay!</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <div id=colour_selector>
+      <p>Choose a colour</p>
+      <input id=colour-input type="color" name="colour">
+      <label for="colour">Colour</label>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+
+      var input = document.getElementById("colour-input")
+
+      input.addEventListener("change", function(e) {
+        e.preventDefault();
+
+        if (input.value) {
+          socket.emit("colour change", input.value);
+        }
+      });
+    </script>
+  </body>
+</html>

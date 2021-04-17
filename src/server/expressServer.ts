@@ -15,6 +15,9 @@ export default class ExpressServer {
 
         this.app.set("socketio", this.io);
 
+        //Set public folder
+        this.app.use(express.static(process.cwd() + "/public"));
+
         this.createIOListener();    
     }
 
@@ -28,9 +31,9 @@ export default class ExpressServer {
                 console.log("a user disconnected")
             })
 
-            socket.on("chat message", (msg) => {
-                console.log("Message: " + msg);
-                this.io?.emit("chat message", msg);
+            socket.on("colour change", (colour) => {
+                console.log("New Colour: " + colour);
+                this.io?.emit("colour change", colour);
             })
         });
     }
