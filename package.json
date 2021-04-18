@@ -4,7 +4,8 @@
   "description": "A node server using signal-r to track the adventure of the BLNT performance and display it visually in a flow chart",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node build/index.js"
   },
   "repository": {
     "type": "git",

@@ -2,11 +2,14 @@ import express, {Express, RequestHandler, Router} from "express";
 import http from 'http';
 import basicAuth from "express-basic-auth"
 import {Server} from "socket.io";
+import { Main } from ".";
 export default class ExpressServer {
+    main: Main
     app: Express
     httpServer: http.Server
     io?: Server
-    constructor() {
+    constructor(main: Main) {
+        this.main = main
         this.app = express()
         this.httpServer = new http.Server(this.app);
         
@@ -23,8 +26,6 @@ export default class ExpressServer {
 
     private createIOListener() {
         this.io?.on('connection', (socket) => {
-            socket.broadcast.emit("hi")
-
             console.log('a user connected');
 
             socket.on("disconnect", () => {

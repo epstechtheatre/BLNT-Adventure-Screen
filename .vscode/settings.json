@@ -5,9 +5,53 @@
     "json.schemas": [
         {
             "schema": {
-                "title": "Scene Pathing",
-                "type": "object",
-            }
-        }
+                "$ref": "#definitions/SceneData",
+
+                "definitions": {
+                    "SceneData": {
+                        "type": "object",
+                        "required": ["objectID", "sceneName"],
+                        "properties": {
+                            "objectID": {
+                                "type": "string",
+                                "description": "The ID of the object in the SVG document."
+                            },
+                            "overlayTitle": {
+                                "type": "string",
+                                "description": "When this object's scene is activated, update the overlay title to this test."
+                            },
+                            "children": {
+                                "description": "All scenes that this scene goes to. If only one child, this scene will not be treated as a choice cue.",
+                                "type": "array",
+                                "items": { "$ref": "#definitions/SceneData"},
+                                "default": [],
+                                "additionalItems": false
+                            },
+                            "sceneName": {
+                                "type": "string",
+                                "description": "The name of the scene this object represents"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+   
+            },
+            "fileMatch": [
+                "SceneRouter.json"
+            ]
+        },
+    ],
+    "colorize.languages": [
+        "css",
+        "sass",
+        "scss",
+        "less",
+        "postcss",
+        "sss",
+        "stylus",
+        "xml",
+        "svg",
+        "json"
     ]
 }
