@@ -32,11 +32,30 @@ export default class ExpressServer {
                 console.log("a user disconnected")
             })
 
-            socket.on("colour change", (colour) => {
-                console.log("New Colour: " + colour);
-                this.io?.emit("colour change", colour);
+            socket.on("sceneSelect", (sceneName: string) => {
+                this.main.SceneTracker.gotoNextScene(sceneName)
             })
+            
+            socket.on("colourChoices", () => {
+                this.main.SceneTracker.displayColourChoices();
+            })
+
+            socket.on("reset", () => {
+                this.main.SceneTracker.reset();
+            })
+
+            this.main.SceneTracker.synchronize()
         });
+    }
+
+    emitSceneOptions(sceneNames: Array<string>) {
+        this.io?.emit("sceneNameOptions", sceneNames)
+    }
+
+    emitColourEvent(objectID: string, newColour: string): ExpressServer {
+        this.io?.emit("colourUpdate", objectID, newColour);
+
+        return this;
     }
 
     addRouter(parentPath: string, ExpressRouter: ExpressRouter): ExpressServer {

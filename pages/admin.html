@@ -2,32 +2,35 @@
 <html>
   <head>
     <title>Admin | BLNT</title>
-    <style>
+    <link rel="stylesheet" href="./css/adminPage.css">
 
-    </style>
   </head>
   <body>
-    <div id=colour_selector>
-      <p>Choose a colour</p>
-      <input id=colour-input type="color" name="colour">
-      <label for="colour">Colour</label>
+    <div id="nextSceneOptionsHolder">
+      <ul id="sceneChoiceButtons">
+
+      </ul>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
 
       window.onload = () => {
+        socket.on("sceneNameOptions", (sceneNames) => {
+          var sceneChoiceButtonsList = document.getElementById("sceneChoiceButtons")
+
+          for(const child in sceneChoiceButtonsList.children) {
+            sceneChoiceButtonsList.removeChild(sceneChoiceButtonsList.children[child]);
+          }
+
+          for (const sceneName of sceneNames) {
+            var item = document.createElement("li");
+            item.className = "sceneChoiceButton"
+            item.textContent = sceneName;
+            sceneChoiceButtonsList.appendChild(item);
+          }
+        })
       }
-
-      var input = document.getElementById("colour-input")
-
-      input.addEventListener("input", function(e) {
-        e.preventDefault();
-
-        if (input.value) {
-          socket.emit("colour change", input.value);
-        }
-      });
     </script>
   </body>
 </html>
