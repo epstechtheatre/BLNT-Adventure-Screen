@@ -1,11 +1,12 @@
 {
     "objectID": "obj-start",
-    "overlayTitle": "Better Luck Next Time!",
+    "overlayTitle": "Better Luck Next Time",
     "sceneName": "Start",
     "children": [
         {
             "objectID": "A",
             "sceneName": "Ice Rink",
+            "overlayTitle": "Ice Rink",
             "children": [
                 {
                     "objectID": "A1",

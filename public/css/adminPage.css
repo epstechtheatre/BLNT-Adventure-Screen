@@ -1,7 +1,17 @@
 .sceneChoiceButton {
     padding: 10px;
     font-size: larger;
-    margin: 5px;
+    margin-right: 5px;
+}
+
+/* #currentSceneText {
+    padding-bottom: 3px;
+} */
+
+#nextSceneOptionsHolder {
+    padding-top: 3px;
+    padding-bottom: 30px;
+    font-size: larger;
 }
 
 #controlButtons {

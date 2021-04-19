@@ -84,6 +84,12 @@ export default class ExpressServer {
         return this;
     }
 
+    emitNewOverlayText(text: string): ExpressServer {
+        this.io?.emit("overlayUpdate", text);
+
+        return this;
+    }
+
     addRouter(parentPath: string, ExpressRouter: ExpressRouter): ExpressServer {
         this.app.use(parentPath, ExpressRouter.router)
 

@@ -14,13 +14,25 @@ export default class SceneTracker {
     currentScene: Scene
     main: Main
     colouring: {[objectID: string]: {value: string, was?: string}} = {}
+    overlayText: {current: string, default: string}
 
-    constructor(main: Main, data: Scene) {
+    constructor(main: Main, data: Scene, defaultOverlayText: string = "Better Luck Next Time") {
         this.main = main;
         this.data = data;
         this.currentScene = data;
+        this.overlayText = {
+            default: defaultOverlayText,
+            current: defaultOverlayText
+        }
 
+        //Set the colour and data for the first scene
         this.setSceneColour(this.currentScene, colours.CurrentScene);
+        
+        if (this.currentScene.overlayTitle) {
+            this.setCurrentOverlayText(this.currentScene.overlayTitle);
+        } else {
+            this.main.Express.emitNewOverlayText(this.overlayText.current);
+        }
     }
 
     sendCurrentSceneChoices(): void {
@@ -81,6 +93,11 @@ export default class SceneTracker {
         }
         this.sendCurrentSceneChoices();
         this.main.Express.emitCurrentSceneName(this.currentScene.sceneName);
+
+        if (this.currentScene.overlayTitle) {
+            this.setCurrentOverlayText(this.currentScene.overlayTitle);
+        }
+
         return this.currentScene;
     }
 
@@ -99,6 +116,12 @@ export default class SceneTracker {
         this.currentScene = this.data;
         this.sendCurrentSceneChoices();
         this.setSceneColour(this.currentScene, colours.CurrentScene);
+
+        if (this.currentScene.overlayTitle) {
+            this.setCurrentOverlayText(this.currentScene.overlayTitle)
+        } else {
+            this.defaultOverlayText();
+        }
     }
 
     synchronize() {
@@ -111,9 +134,13 @@ export default class SceneTracker {
         //Update the list of scene choices
         this.sendCurrentSceneChoices()
 
+        //Update the overlay text
+
+        this.main.Express.emitNewOverlayText(this.overlayText.current)
+
     }
 
-    private setSceneColour(scene: Scene, colour: string): void {
+    private setSceneColour(scene: Scene, colour: string): SceneTracker {
         if (this.colouring[scene.objectID] && this.colouring[scene.objectID].value === colours.TerminatingScene) {
             this.colouring[scene.objectID].was = this.colouring[scene.objectID].value
         }
@@ -127,5 +154,23 @@ export default class SceneTracker {
         }
 
         this.main.Express.emitColourEvent(scene.objectID, colour);
+
+        return this;
+    }
+
+    private setCurrentOverlayText(text: string): SceneTracker {
+        this.overlayText.current = text
+
+        this.main.Express.emitNewOverlayText(this.overlayText.current);
+
+        return this;
+    }
+
+    private defaultOverlayText(): SceneTracker {
+        this.overlayText.current = this.overlayText.default;
+
+        this.main.Express.emitNewOverlayText(this.overlayText.current)
+
+        return this;
     }
 } 

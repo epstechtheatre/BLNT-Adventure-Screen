@@ -1,73 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Admin | BLNT</title>
-    <link rel="stylesheet" href="./css/adminPage.css">
-
+    <title>Better Luck Next Time!</title>
+    <link rel="stylesheet" href="./css/flowPage.css"/>
   </head>
   <body>
-    <p id="currentSceneText">
-      Current Scene:
-      <b id="currentSceneName">
-        LOADING...
-      </b>
-    </p>
-
-    <div id="nextSceneOptionsHolder">
-    </div>
-
     <object type="image/svg+xml" data="./images/svg/flowchart.svg" id=svg_render></object>
-
-    <div id="controlButtons">
-      <button id="showChoiceColours" class="controlButton">Colour Next Scenes</button>
-      <button id="resetAll" class="controlButton">Reset All</button>
-    </div>
+    
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
 
-      function buttonClicked(sceneName) {
-        socket.emit("sceneSelect", sceneName)
-      }
-
       window.onload = () => {
-        socket.emit("getCurrentSceneName", (sceneName) => {
-          document.getElementById("currentSceneName").textContent = sceneName;
-        })
-        document.getElementById("showChoiceColours").addEventListener("click", () => {
-          socket.emit("colourChoices")
-        })
-        document.getElementById("resetAll").addEventListener("click", () => {
-          if (confirm("Are you sure? This will reset everything!")) {
-            socket.emit("reset")
-          }
-        })
-
-        socket.on("currentSceneName", (sceneName) => {
-          document.getElementById("currentSceneName").textContent = sceneName;
-        })
-
-
-        socket.on("sceneNameOptions", (sceneNames) => {
-          var sceneChoiceButtons = document.getElementById("nextSceneOptionsHolder")
-
-          while(sceneChoiceButtons.firstChild) {
-            sceneChoiceButtons.removeChild(sceneChoiceButtons.lastChild)
-          }
-
-          for (const scene of sceneNames) {
-            var item = document.createElement("button");
-            item.className = "sceneChoiceButton"
-            item.textContent = scene;
-
-            item.addEventListener("click", (button) => {
-              buttonClicked(button.target.textContent);
-            })
-
-            sceneChoiceButtons.appendChild(item);
-          }
-        })
-
         socket.on("colourUpdate", (objectID, colour) => {
           const selectedShape = document.getElementById("svg_render").contentDocument.documentElement.getElementById(objectID)
 
@@ -84,10 +28,10 @@
             changeText(textOverlay, text)
           }
         })
-      }
+    }
 
-      //https://stackoverflow.com/questions/63980077/animate-text-content-with-js
-      var changeText = function(textObject, newText) {
+    //https://stackoverflow.com/questions/63980077/animate-text-content-with-js
+    var changeText = function(textObject, newText) {
         item = textObject
         
         // item.animate(...) returns an Animation (refer to https://developer.mozilla.org/en-US/docs/Web/API/Element/animate)

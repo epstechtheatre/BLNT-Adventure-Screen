@@ -7,7 +7,7 @@ const adminRouter = new ExpressRouter(true).addRouteGet("/", (req, res) => {
 })
 
 const clientRouter = new ExpressRouter().addRouteGet("/", (req, res) => {
-    res.sendFile(process.cwd() + "/pages/index.html");
+    res.sendFile(process.cwd() + "/pages/flow.html");
 });
 
 

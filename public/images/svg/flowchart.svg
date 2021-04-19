@@ -5,6 +5,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="196.69609mm"
@@ -16,6 +17,60 @@
    sodipodi:docname="drawing.svg">
   <defs
      id="defs2">
+    <rect
+       x="21.502838"
+       y="96.330139"
+       width="196.77919"
+       height="32.602127"
+       id="rect31" />
+    <rect
+       x="21.502838"
+       y="96.330139"
+       width="196.77919"
+       height="32.602127"
+       id="rect121" />
+    <rect
+       x="21.502838"
+       y="96.330139"
+       width="196.77919"
+       height="32.602127"
+       id="rect111" />
+    <rect
+       x="159.71184"
+       y="49.660375"
+       width="47.360417"
+       height="23.283333"
+       id="rect105" />
+    <rect
+       x="21.502838"
+       y="96.330139"
+       width="196.77919"
+       height="32.602127"
+       id="rect79" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient69">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop65" />
+      <stop
+         style="stop-color:#ececec;stop-opacity:1"
+         offset="1"
+         id="stop67" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient49">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0"
+         id="stop45" />
+      <stop
+         style="stop-color:#b3b3b3;stop-opacity:1"
+         offset="1"
+         id="stop47" />
+    </linearGradient>
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
        inkscape:vp_x="82.826567 : -90.890158 : 1"
@@ -23,6 +78,46 @@
        inkscape:vp_z="1477.5033 : -90.890158 : 1"
        inkscape:persp3d-origin="780.16493 : -37.545222 : 1"
        id="perspective18" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49"
+       id="linearGradient43"
+       x1="77.161842"
+       y1="103.1062"
+       x2="77.161842"
+       y2="120.56871"
+       gradientUnits="userSpaceOnUse"
+       spreadMethod="pad" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49"
+       id="linearGradient51"
+       gradientUnits="userSpaceOnUse"
+       x1="77.161842"
+       y1="103.1062"
+       x2="77.161842"
+       y2="120.56871"
+       spreadMethod="pad"
+       gradientTransform="matrix(1.013755,0,0,1.0137551,62.642218,-247.83777)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient69"
+       id="linearGradient63"
+       x1="101.7681"
+       y1="93.581207"
+       x2="101.7681"
+       y2="113.68954"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.2407156,0,0,1.2407156,-74.75028,-210.50146)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient49"
+       id="linearGradient41"
+       x1="54.150719"
+       y1="111.1618"
+       x2="54.150719"
+       y2="104.63507"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -31,17 +126,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="175.86647"
-     inkscape:cy="298.04369"
+     inkscape:zoom="1.0452203"
+     inkscape:cx="340.96021"
+     inkscape:cy="307.13048"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1680"
-     inkscape:window-height="1027"
-     inkscape:window-x="3512"
-     inkscape:window-y="129"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="1592"
+     inkscape:window-y="102"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -136,49 +231,20 @@
        inkscape:connector-curvature="0"
        inkscape:connection-start="#A"
        inkscape:connection-end="#pentagon-3" />
+    <rect
+       style="opacity:0.8;fill:#000000;stroke-width:0.265317"
+       id="rect23"
+       width="196.77919"
+       height="32.602131"
+       x="21.502838"
+       y="96.330139" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="34.828514"
-       y="68.181206"
-       id="text17"><tspan
-         sodipodi:role="line"
-         id="tspan15"
-         x="34.828514"
-         y="68.181206"
-         style="stroke-width:0.264583">Start</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="100.97435"
-       y="68.97496"
-       id="text21"><tspan
-         sodipodi:role="line"
-         id="tspan19"
-         x="100.97435"
-         y="68.97496"
-         style="stroke-width:0.264583">Ice Rink</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="57.582672"
-       y="154.69995"
-       id="text25"><tspan
-         sodipodi:role="line"
-         id="tspan23"
-         x="57.582672"
-         y="154.69995"
-         style="stroke-width:0.264583">Heater Face</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="145.15976"
-       y="153.64163"
-       id="text29"><tspan
-         sodipodi:role="line"
-         id="tspan27"
-         x="145.15976"
-         y="153.64163"
-         style="stroke-width:0.264583">Ice Monster</tspan></text>
+       id="overlayText"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.6389px;line-height:1.75;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;white-space:pre;shape-inside:url(#rect31);fill:url(#linearGradient41);fill-opacity:1;stroke:none;"
+       transform="translate(2.5897297e-4)"><tspan
+         x="21.501953"
+         y="116.83231"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.6389px;font-family:ISOCPEUR;-inkscape-font-specification:'ISOCPEUR, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:url(#linearGradient41);fill-opacity:1">Loading...</tspan></tspan></text>
   </g>
 </svg>
