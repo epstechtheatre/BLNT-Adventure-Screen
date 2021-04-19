@@ -1,5 +1,21 @@
 {
     "objectID": "obj-start",
     "overlayTitle": "Better Luck Next Time!",
-    "sceneName": "Start"
+    "sceneName": "Start",
+    "children": [
+        {
+            "objectID": "A",
+            "sceneName": "Ice Rink",
+            "children": [
+                {
+                    "objectID": "A1",
+                    "sceneName": "Heater Face"
+                },
+                {
+                    "objectID": "A2",
+                    "sceneName": "Ice Monster"
+                }
+            ]
+        }
+    ]
 }

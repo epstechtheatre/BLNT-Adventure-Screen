@@ -6,28 +6,74 @@
 
   </head>
   <body>
-    <div id="nextSceneOptionsHolder">
-      <ul id="sceneChoiceButtons">
+    <p id="currentSceneText">
+      Current Scene:
+      <b id="currentSceneName">
+        LOADING...
+      </b>
+    </p>
 
-      </ul>
+    <div id="nextSceneOptionsHolder">
+    </div>
+
+    <object type="image/svg+xml" data="./images/svg/drawing.svg" id=svg_render></object>
+
+    <div id="controlButtons">
+      <button id="showChoiceColours" class="controlButton">Colour Next Scenes</button>
+      <button id="resetAll" class="controlButton">Reset All</button>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
 
-      window.onload = () => {
-        socket.on("sceneNameOptions", (sceneNames) => {
-          var sceneChoiceButtonsList = document.getElementById("sceneChoiceButtons")
+      function buttonClicked(sceneName) {
+        socket.emit("sceneSelect", sceneName)
+      }
 
-          for(const child in sceneChoiceButtonsList.children) {
-            sceneChoiceButtonsList.removeChild(sceneChoiceButtonsList.children[child]);
+      window.onload = () => {
+        socket.emit("getCurrentSceneName", (sceneName) => {
+          document.getElementById("currentSceneName").textContent = sceneName;
+        })
+        document.getElementById("showChoiceColours").addEventListener("click", () => {
+          socket.emit("colourChoices")
+        })
+        document.getElementById("resetAll").addEventListener("click", () => {
+          if (confirm("Are you sure? This will reset everything!")) {
+            socket.emit("reset")
+          }
+        })
+
+        socket.on("currentSceneName", (sceneName) => {
+          document.getElementById("currentSceneName").textContent = sceneName;
+        })
+
+
+        socket.on("sceneNameOptions", (sceneNames) => {
+          var sceneChoiceButtons = document.getElementById("nextSceneOptionsHolder")
+
+          while(sceneChoiceButtons.firstChild) {
+            sceneChoiceButtons.removeChild(sceneChoiceButtons.lastChild)
           }
 
-          for (const sceneName of sceneNames) {
-            var item = document.createElement("li");
+          for (const scene of sceneNames) {
+            var item = document.createElement("button");
             item.className = "sceneChoiceButton"
-            item.textContent = sceneName;
-            sceneChoiceButtonsList.appendChild(item);
+            item.textContent = scene;
+
+            item.addEventListener("click", (button) => {
+              buttonClicked(button.target.textContent);
+            })
+
+            sceneChoiceButtons.appendChild(item);
+          }
+        })
+
+        socket.on("colourUpdate", (objectID, colour) => {
+          const selectedShape = document.getElementById("svg_render").contentDocument.documentElement.getElementById(objectID)
+
+          if (selectedShape) {
+            selectedShape.style["transition"] = "0.5s"
+            selectedShape.style["fill"] = colour
           }
         })
       }

@@ -1,6 +1,6 @@
 {
     "TerminatingScene": "#770000",
-    "CurrentScene": "#ffffff",
+    "CurrentScene": "#999999",
     "PreviousScenes": "#555555",
     "ChoiceScenes": "#770077",
     "UnselectedChoice": "#555555"

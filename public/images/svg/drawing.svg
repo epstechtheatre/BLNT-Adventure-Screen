@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="196.69609mm"
+   height="153.61699mm"
+   viewBox="0 0 196.69609 153.61699"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
@@ -18,10 +18,10 @@
      id="defs2">
     <inkscape:perspective
        sodipodi:type="inkscape:persp3d"
-       inkscape:vp_x="82.826563 : 52.492851 : 1"
-       inkscape:vp_y="0 : -1077.6759 : 0"
-       inkscape:vp_z="1477.5032 : 52.492851 : 1"
-       inkscape:persp3d-origin="780.16489 : 105.83779 : 1"
+       inkscape:vp_x="82.826567 : -90.890158 : 1"
+       inkscape:vp_y="0 : -1077.6758 : 0"
+       inkscape:vp_z="1477.5033 : -90.890158 : 1"
+       inkscape:persp3d-origin="780.16493 : -37.545222 : 1"
        id="perspective18" />
   </defs>
   <sodipodi:namedview
@@ -31,18 +31,22 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="382.76244"
-     inkscape:cy="443.80887"
+     inkscape:zoom="1"
+     inkscape:cx="175.86647"
+     inkscape:cy="298.04369"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1057"
-     inkscape:window-x="1592"
-     inkscape:window-y="102"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1680"
+     inkscape:window-height="1027"
+     inkscape:window-x="3512"
+     inkscape:window-y="129"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -58,28 +62,29 @@
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-21.334761,-39.870792)">
     <rect
        style="opacity:0.7;fill:#000000;stroke-width:0.264583"
-       id="rectangle"
+       id="obj-start"
        width="54.806545"
        height="48.380955"
-       x="19.276785"
-       y="39.309525" />
+       x="21.334761"
+       y="39.870792" />
     <ellipse
        style="opacity:0.7;fill:#000000;stroke-width:0.219494"
-       id="Scene-2-1-choice-1"
-       cx="108.10119"
-       cy="69.925598"
+       id="A"
+       cx="123.93401"
+       cy="64.687111"
        rx="23.8125"
        ry="22.67857" />
     <path
        sodipodi:type="star"
        style="opacity:0.7;fill:#000000;stroke-width:0.264583"
-       id="pentagon"
+       id="A1"
        sodipodi:sides="5"
        sodipodi:cx="88.446434"
-       sodipodi:cy="156.48214"
+       sodipodi:cy="156.48215"
        sodipodi:r1="43.130707"
        sodipodi:r2="34.893478"
        sodipodi:arg1="2.2879775"
@@ -90,5 +95,90 @@
        d="M 60.098223,188.9881 48.771359,139.56629 92.2741,113.52162 l 38.21304,33.32532 -19.88579,46.64085 z"
        inkscape:transform-center-x="-1.1828138"
        inkscape:transform-center-y="-2.9774437" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 76.141306,63.952713 100.125,64.321254"
+       id="path15"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#rectangle"
+       inkscape:connection-end="#Scene-2-1-choice-1" />
+    <path
+       sodipodi:type="star"
+       style="opacity:0.7;fill:#000000;stroke-width:0.264583"
+       id="A2"
+       sodipodi:sides="5"
+       sodipodi:cx="175.99014"
+       sodipodi:cy="152.46127"
+       sodipodi:r1="43.130707"
+       sodipodi:r2="34.893478"
+       sodipodi:arg1="2.2879775"
+       sodipodi:arg2="2.9162961"
+       inkscape:flatsided="true"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       inkscape:transform-center-x="-1.1828138"
+       inkscape:transform-center-y="-2.9774437"
+       d="m 147.64193,184.96722 -11.32686,-49.42181 43.50274,-26.04466 38.21304,33.32532 -19.88579,46.64085 z" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 115.71334,85.971036 101.84756,121.87057"
+       id="path41"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#A"
+       inkscape:connection-end="#pentagon" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 136.15447,84.151335 23.49599,37.423405"
+       id="path43"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#A"
+       inkscape:connection-end="#pentagon-3" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="34.828514"
+       y="68.181206"
+       id="text17"><tspan
+         sodipodi:role="line"
+         id="tspan15"
+         x="34.828514"
+         y="68.181206"
+         style="stroke-width:0.264583">Start</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="100.97435"
+       y="68.97496"
+       id="text21"><tspan
+         sodipodi:role="line"
+         id="tspan19"
+         x="100.97435"
+         y="68.97496"
+         style="stroke-width:0.264583">Ice Rink</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="57.582672"
+       y="154.69995"
+       id="text25"><tspan
+         sodipodi:role="line"
+         id="tspan23"
+         x="57.582672"
+         y="154.69995"
+         style="stroke-width:0.264583">Heater Face</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="145.15976"
+       y="153.64163"
+       id="text29"><tspan
+         sodipodi:role="line"
+         id="tspan27"
+         x="145.15976"
+         y="153.64163"
+         style="stroke-width:0.264583">Ice Monster</tspan></text>
   </g>
 </svg>

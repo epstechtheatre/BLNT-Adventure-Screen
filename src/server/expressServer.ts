@@ -3,6 +3,7 @@ import http from 'http';
 import basicAuth from "express-basic-auth"
 import {Server} from "socket.io";
 import { Main } from ".";
+import { SceneNameNotFoundError } from "./customErrors";
 export default class ExpressServer {
     main: Main
     app: Express
@@ -32,15 +33,32 @@ export default class ExpressServer {
                 console.log("a user disconnected")
             })
 
+            socket.on("getCurrentSceneName", (callback) => {
+                callback(this.main.SceneTracker.currentScene.sceneName)
+            })
+
             socket.on("sceneSelect", (sceneName: string) => {
-                this.main.SceneTracker.gotoNextScene(sceneName)
+                console.log(`Scene Selected: ${sceneName}`)
+
+                try {
+                    this.main.SceneTracker.gotoNextScene(sceneName)
+                } catch (e) {
+
+                    if (e instanceof SceneNameNotFoundError) {
+                        console.error("Scene Selected not Found!")
+                    } else {
+                        throw e
+                    }
+                }
             })
             
             socket.on("colourChoices", () => {
+                console.log("Displaying colour choices")
                 this.main.SceneTracker.displayColourChoices();
             })
 
             socket.on("reset", () => {
+                console.warn("Resetting...")
                 this.main.SceneTracker.reset();
             })
 
@@ -48,8 +66,16 @@ export default class ExpressServer {
         });
     }
 
+    emitCurrentSceneName(sceneName: string) {
+        this.io?.emit("currentSceneName", sceneName)
+    }
+
     emitSceneOptions(sceneNames: Array<string>) {
-        this.io?.emit("sceneNameOptions", sceneNames)
+        if (sceneNames.length === 0) {
+            this.io?.emit("sceneNameOptions", ["Return To Start"])
+        } else {
+            this.io?.emit("sceneNameOptions", sceneNames)
+        }
     }
 
     emitColourEvent(objectID: string, newColour: string): ExpressServer {

@@ -4,29 +4,31 @@
     <title>Better Luck Next Time!</title>
     <style>
       #svg_render {
-        width: 30%;
-        height: 30%;
+        width: 100%;
+        height: 100%;
       }
 
     </style>
   </head>
   <body>
     <object type="image/svg+xml" data="./images/svg/drawing.svg" id=svg_render></object>
+    
+    
+    
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
 
-      let selectedShape;
       window.onload = () => {
-        selectedShape = document.getElementById("svg_render").contentDocument.documentElement.getElementById("Scene-2-1-choice-1")
-      }
+        socket.on("colourUpdate", (objectID, colour) => {
+        const selectedShape = document.getElementById("svg_render").contentDocument.documentElement.getElementById(objectID)
 
-      socket.on("colour change", function(colour) {
         if (selectedShape) {
           selectedShape.style["transition"] = "0.5s"
           selectedShape.style["fill"] = colour
         }
       })
+    }
     </script>
   </body>
 </html>

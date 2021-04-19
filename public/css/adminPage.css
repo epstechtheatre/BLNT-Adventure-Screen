@@ -1,0 +1,33 @@
+.sceneChoiceButton {
+    padding: 10px;
+    font-size: larger;
+    margin: 5px;
+}
+
+#controlButtons {
+    position: fixed;
+    bottom: 3%;
+}
+
+#svg_render {
+    bottom: 50%;
+    height: 25%;
+    width: 25%;
+}
+
+#currentSceneText {
+    font-size: x-large;
+}
+
+.controlButton {
+    padding: 10px;
+    font-size: larger;
+}
+
+#resetAll {
+    position: fixed;
+    right: 0%;
+    margin-right: 1%;
+    background-color: rgb(177, 0, 0);
+    color: floralwhite;
+}
