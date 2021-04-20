@@ -109,7 +109,7 @@ export default class SceneTracker {
 
     reset() {
         for (const objectID in this.colouring) {
-            this.main.Express.emitColourEvent(objectID, "#000000");
+            this.main.Express.emitColourEvent(objectID, colours.ResetColour);
         }
         this.colouring = {};
 

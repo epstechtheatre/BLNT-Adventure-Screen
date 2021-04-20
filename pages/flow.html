@@ -8,10 +8,13 @@
     <object type="image/svg+xml" data="./images/svg/flowchart.svg" id=svg_render></object>
     
     <script src="/socket.io/socket.io.js"></script>
+    <script src="/unsettlingRandoms.js"></script>
     <script>
       var socket = io();
-
+      const random = Math.floor(Math.random() * randomData.length);
       window.onload = () => {
+        document.getElementById("svg_render").contentDocument.documentElement.getElementById("overlayText").children[0].textContent = randomData[random];
+
         socket.on("colourUpdate", (objectID, colour) => {
           const selectedShape = document.getElementById("svg_render").contentDocument.documentElement.getElementById(objectID)
 
@@ -25,9 +28,15 @@
           const textOverlay = document.getElementById("svg_render").contentDocument.documentElement.getElementById("overlayText");
 
           if(textOverlay) {
-            changeText(textOverlay, text)
+            if (!(textOverlay.children[0].textContent === text)) {
+              changeText(textOverlay, text)
+            }
           }
         })
+
+        setTimeout(() => {
+          socket.emit("synchronize")
+        }, 250);
     }
 
     //https://stackoverflow.com/questions/63980077/animate-text-content-with-js
@@ -55,6 +64,13 @@
           animation.onfinish = function() {
             // change text 
             item.children[0].textContent = newText;
+            
+            //Apply text fudge factor
+            textObject.children[0].x.baseVal[0].value = (document.getElementById("svg_render").contentDocument.documentElement.getElementById("overlayTextBacking").width["baseVal"].value 
+              - (textObject.getBBox().width)) / 2
+              //This works for some reason... Don't touch it
+
+
             // and start the second animation   
             item.animate([
             // keyframes

@@ -3,5 +3,6 @@
     "CurrentScene": "#999999",
     "PreviousScenes": "#555555",
     "ChoiceScenes": "#770077",
-    "UnselectedChoice": "#555555"
+    "UnselectedChoice": "#555555",
+    "ResetColour": "#ffffff"
 }

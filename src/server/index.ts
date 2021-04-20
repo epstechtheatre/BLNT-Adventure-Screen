@@ -1,6 +1,7 @@
 import ExpressServer, {ExpressRouter} from "./expressServer";
 import SceneTracker, {Scene} from "./sceneTracker"
 import SceneRouter from "../SceneRouter.json"
+import config from "../serverConfig.json"
 
 const adminRouter = new ExpressRouter(true).addRouteGet("/", (req, res) => {
     res.sendFile(process.cwd() + "/pages/admin.html");
@@ -28,4 +29,4 @@ export class Main {
 const main = new Main((SceneRouter as Scene));
 main.Express.addRouter("/admin", adminRouter).addRouter("/flow", clientRouter);
 
-main.Express.startServer(3000);
+main.Express.startServer(config.port);

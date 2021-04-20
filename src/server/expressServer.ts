@@ -51,6 +51,10 @@ export default class ExpressServer {
                     }
                 }
             })
+
+            socket.on("synchronize", () => {
+                this.main.SceneTracker.synchronize()
+            })
             
             socket.on("colourChoices", () => {
                 console.log("Displaying colour choices")
@@ -61,8 +65,6 @@ export default class ExpressServer {
                 console.warn("Resetting...")
                 this.main.SceneTracker.reset();
             })
-
-            this.main.SceneTracker.synchronize()
         });
     }
 
