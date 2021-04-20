@@ -3,7 +3,6 @@ var randomData = [
     "Your refrigerator is opening",
     "Hot dogs are best dogs",
     "Friends are expendable... Sometimes",
-    "Yikes",
     "Happy 16th!",
     "You better watch out",
     "Gaslighting. Fun for everyone!",
@@ -18,5 +17,8 @@ var randomData = [
     "IT BURNSSSS!",
     "Thank for you using self-checkout",
     "Ouch",
-    "If only you'd brought a straw"
+    "If only you'd brought a straw",
+    "Thank you for complying",
+    "Choices...",
+    "It's a meteor shower"
 ]
