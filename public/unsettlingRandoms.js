@@ -17,5 +17,6 @@ var randomData = [
     "AH MY EYES!",
     "IT BURNSSSS!",
     "Thank for you using self-checkout",
-    "Ouch"
+    "Ouch",
+    "If only you'd brought a straw"
 ]
