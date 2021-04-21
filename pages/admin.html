@@ -4,6 +4,12 @@
     <title>Admin | BLNT</title>
     <link rel="stylesheet" href="./css/adminPage.css">
 
+    <style>
+      @font-face {
+        font-family: "custom-font";
+        src: local("./fonts/UbuntuMono-Regular.ttf")
+      }
+    </style>
   </head>
   <body>
     <p id="currentSceneText">
@@ -31,6 +37,7 @@
       }
 
       window.onload = () => {
+        // document.getElementById("svg_render").contentDocument.documentElement.getElementById("overlayText").children[0].style["font-family"] = "custom-font"
         document.getElementById("svg_render").contentDocument.documentElement.getElementById("overlayText").children[0].textContent = "Loading..."
 
         socket.emit("synchronize")

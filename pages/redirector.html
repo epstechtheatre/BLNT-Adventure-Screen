@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome.</title>
+
+    <link rel="stylesheet" href="./css/redirectPage.css"/>
+  </head>
+  <body>
+    <div id="background">
+        <object type="image/svg+xml" data="./images/svg/flowchart.svg" id=svg_render></object>
+    </div>
+    <div id="content">
+        <h1>
+            Welcome to the <p id="PlayName">Better Luck Next Time</p> Adventure Tracking Initiative
+        </h1>
+        <h3>
+            Join us as we explore the deepest darkest corners of temporal space
+        </h3>
+    
+        <div id="linkText">
+            <p>
+                If you are a controller of the timeline, we invite you to
+                <a href="./admin">log in here</a>
+                <br><br>
+                If you are but a casual observer of the timeline, track your movement around space
+                <a href="./flow">here</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="githubCallout">
+        <a id="github" target="_blank" href="https://github.com/epstechtheatre/BLNT-Adventure-Screen">View on Github</a>
+    </div>
+    <script>
+        window.onload = () => {
+            document.getElementById("svg_render").contentDocument.documentElement.getElementById("overlayText").children[0].textContent = "";
+            document.getElementById("svg_render").contentDocument.documentElement.getElementById("overlayTextBacking").remove()
+        }
+    </script>
+  </body>
+</html>

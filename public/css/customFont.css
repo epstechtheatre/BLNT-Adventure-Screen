@@ -1,0 +1,5 @@
+@font-face {
+  font-family: "custom-font";
+  /* src: local("./fonts/UbuntuMono-Regular.ttf") */
+    src: url("https://github.com/google/fonts/raw/5c3d8ef085f3084db38936d0dcd39a567dbc1e01/ofl/sharetechmono/ShareTechMono-Regular.ttf");
+}

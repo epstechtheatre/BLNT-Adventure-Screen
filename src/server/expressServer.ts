@@ -4,6 +4,8 @@ import basicAuth from "express-basic-auth"
 import {Server} from "socket.io";
 import { Main } from ".";
 import { SceneNameNotFoundError } from "./customErrors";
+import fs from "fs"
+
 export default class ExpressServer {
     main: Main
     app: Express
@@ -133,5 +135,5 @@ export class ExpressRouter {
 }
 
 function getUnauthorizedResponse() {
-    return `You failed successfully authenticate with the server`
+    return "You failed to successfully authenticate with the server. Refresh the page to try again or use the back button in your browser to return home"
 }

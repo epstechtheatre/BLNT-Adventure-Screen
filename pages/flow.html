@@ -13,6 +13,7 @@
       var socket = io();
       const random = Math.floor(Math.random() * randomData.length);
       window.onload = () => {
+        // document.getElementById("svg_render").contentDocument.documentElement.getElementById("overlayText").children[0].style["font-family"] = "custom-font"
         document.getElementById("svg_render").contentDocument.documentElement.getElementById("overlayText").children[0].textContent = randomData[random];
 
         socket.on("colourUpdate", (objectID, colour) => {
@@ -36,7 +37,7 @@
 
         setTimeout(() => {
           socket.emit("synchronize")
-        }, 250);
+        }, 400);
     }
 
     //https://stackoverflow.com/questions/63980077/animate-text-content-with-js

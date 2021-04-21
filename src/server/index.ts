@@ -11,6 +11,10 @@ const clientRouter = new ExpressRouter().addRouteGet("/", (req, res) => {
     res.sendFile(process.cwd() + "/pages/flow.html");
 });
 
+const redirectRouter = new ExpressRouter().addRouteGet("", (req, res) => {
+    res.sendFile(process.cwd() + "/pages/redirector.html");
+})
+
 
 export class Main {
     static instance: Main
@@ -27,6 +31,6 @@ export class Main {
 }
 
 const main = new Main((SceneRouter as Scene));
-main.Express.addRouter("/admin", adminRouter).addRouter("/flow", clientRouter);
+main.Express.addRouter("/admin", adminRouter).addRouter("/flow", clientRouter).addRouter("", redirectRouter);
 
 main.Express.startServer(config.port);
