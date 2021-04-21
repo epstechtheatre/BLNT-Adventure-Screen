@@ -135,5 +135,5 @@ export class ExpressRouter {
 }
 
 function getUnauthorizedResponse() {
-    return "You failed to successfully authenticate with the server. Refresh the page to try again or use the back button in your browser to return home"
+    return "You failed to authenticate with the server. Better Luck Next Time!"
 }
