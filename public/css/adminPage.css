@@ -16,30 +16,72 @@
     font-size: larger;
 }
 
-#controlButtons {
-    position: fixed;
-    bottom: 3%;
-}
-
 #svg_render {
     bottom: 50%;
     height: 60%;
     width: 60%;
 }
 
+#undo {
+    background-color: orange;
+}
+
+#showChoiceColours {
+    background-color: rgb(149, 70, 223);
+}
+
+#undo:hover {
+    background-color: rgb(177, 115, 0);
+}
+
 #currentSceneText {
     font-size: x-large;
 }
 
-.controlButton {
+#showChoiceColours:hover {
+    background-color: rgb(97, 47, 145);
+}
+
+#customOverlay {
+    display: inline-block;
+    margin-top: 10px;
+    border-style: solid;
+    margin-right: auto;
     padding: 10px;
+}
+
+#overlayInput {
+    size: 50;
     font-size: larger;
+}
+
+#overlaySend {
+    font-size: larger;
+}
+
+.controlButton {
+    margin-top: 20px;
+    margin-right: 5px;
+    font-size: larger;
+    padding: 10px;
+    transition: 0.25s;
+    border-radius: 0;
+    border-style: solid;
+    border-color: black;
 }
 
 #resetAll {
     position: fixed;
-    right: 0%;
+    left: 0%;
+    bottom: 0%;
+    padding: 10px;
+    font-size: large;
     margin-right: 1%;
     background-color: rgb(177, 0, 0);
     color: floralwhite;
+    transition: 0.25s;
+}
+
+#resetAll:hover {
+    background-color: rgb(124, 0, 0);
 }

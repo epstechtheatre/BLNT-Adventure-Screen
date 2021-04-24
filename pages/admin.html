@@ -26,8 +26,19 @@
 
     <div id="controlButtons">
       <button id="showChoiceColours" class="controlButton">Colour Next Scenes</button>
-      <button id="resetAll" class="controlButton">Reset All</button>
+      <button id="undo" class="controlButton">Undo</button>
     </div>
+    
+    <div id="customOverlay">
+
+      <form id="overlaySubmission" action="">
+        <input type="text" id="overlayInput" placeholder="Enter Overlay Text (Case Sensitive)" maxlength="35" size=50>
+        <button id="overlaySend">Send</button>
+      </form>
+    </div>
+
+    <button id="resetAll" class="systemButton">Reset All</button>
+
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
@@ -49,8 +60,22 @@
           socket.emit("colourChoices")
         })
         document.getElementById("resetAll").addEventListener("click", () => {
-          if (confirm("Are you sure? This will reset everything!")) {
+          if (confirm("Are you sure? This will reset everything!\n\nYou will not be able to undo.")) {
             socket.emit("reset")
+          }
+        })
+        document.getElementById("overlaySend").addEventListener("click", (e) => {
+          e.preventDefault();
+          
+          var text = document.getElementById("overlayInput");
+
+          if (text.value === "") {
+            return;
+          }
+
+          if (confirm(`Are you sure? This will be send immediately with no spellchecking\n\nYou entered: ${text.value}`)) {
+            socket.emit("customOverlay", (text.value));
+            document.getElementById("overlayInput").value = "";
           }
         })
 
