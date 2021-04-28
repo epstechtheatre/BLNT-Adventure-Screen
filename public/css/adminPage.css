@@ -72,11 +72,10 @@
 
 #resetAll {
     position: fixed;
-    left: 0%;
-    bottom: 0%;
+    right: 5px;
+    bottom: 5px;
     padding: 10px;
     font-size: large;
-    margin-right: 1%;
     background-color: rgb(177, 0, 0);
     color: floralwhite;
     transition: 0.25s;
