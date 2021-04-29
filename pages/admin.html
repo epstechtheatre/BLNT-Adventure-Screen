@@ -37,6 +37,11 @@
       </form>
     </div>
 
+    <div id="setColor">
+      <p>Colour All Active Boxes</p>
+      <button id="red" class="colourButton">Red</button>
+    </div>
+
     <button id="resetAll" class="systemButton">Reset All</button>
 
     <script src="/socket.io/socket.io.js"></script>
@@ -76,6 +81,11 @@
           if (confirm(`Are you sure? This will be send immediately with no spellchecking\n\nYou entered: ${text.value}`)) {
             socket.emit("customOverlay", (text.value));
             document.getElementById("overlayInput").value = "";
+          }
+        })
+        document.getElementById("red").addEventListener("click", () => {
+          if (confirm("Are you sure? This will recolour all active boxes to be red.")) {
+            socket.emit("recolourAll", "red")
           }
         })
 

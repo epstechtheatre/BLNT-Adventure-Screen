@@ -84,3 +84,30 @@
 #resetAll:hover {
     background-color: rgb(124, 0, 0);
 }
+
+#setColor {
+    display: block;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.colourButton {
+    font-size: larger;
+    border-style: solid;
+    border-color: black;
+    padding: 15px;
+    background-color: gray;
+    transition: 0.2s;
+}
+
+#red {
+    background-color: rgb(146, 46, 46);
+}
+
+.colourButton:hover {
+    background-color: rgb(73, 73, 73) !important;
+}
+
+#setColor p {
+    font-size: larger;
+}

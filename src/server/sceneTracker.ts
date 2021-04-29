@@ -140,6 +140,20 @@ export default class SceneTracker {
 
     }
 
+    recolourAll(colour: "red"): void {
+        for (const entry in this.colouring) {
+            switch (colour) {
+                case "red":
+                    this.colouring[entry].value = colours.TerminatingScene
+                    break;
+
+                default:
+                    break;
+            }
+            this.main.Express.emitColourEvent(entry, this.colouring[entry].value)
+        }
+    }
+
     private setSceneColour(scene: Scene, colour: string): SceneTracker {
         if (this.colouring[scene.objectID] && this.colouring[scene.objectID].value === colours.TerminatingScene) {
             this.colouring[scene.objectID].was = this.colouring[scene.objectID].value

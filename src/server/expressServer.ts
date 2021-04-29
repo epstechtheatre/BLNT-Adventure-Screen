@@ -66,6 +66,9 @@ export default class ExpressServer {
                 console.log(`Custom overlay ${customOverlay}`)
                 this.emitNewOverlayText(customOverlay);
             })
+            socket.on("recolourAll", (colour: string) => {
+                this.main.SceneTracker.recolourAll((colour as "red"))
+            })
 
             socket.on("reset", () => {
                 console.warn("Resetting...")
