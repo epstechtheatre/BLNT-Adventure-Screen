@@ -4,6 +4,8 @@
     padding: 10px;
     font-size: larger;
     margin-right: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-weight: bold; */
 }
 
 /* #currentSceneText {
@@ -17,9 +19,13 @@
 }
 
 #svg_render {
-    bottom: 50%;
     height: 60%;
     width: 60%;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    padding: 3px;
+    background-color: white;
 }
 
 #undo {
@@ -34,8 +40,34 @@
     background-color: rgb(177, 115, 0);
 }
 
+body {
+    background-color: rgb(28, 52, 80);
+}
+
+#header {
+    background-color: rgb(119, 153, 163);
+    padding: 1px;
+    position: sticky;
+    display: flex;
+    top:3px;
+    margin-bottom: 5px;
+}
+
 #currentSceneText {
     font-size: x-large;
+    left:0%;
+    display: inline;
+}
+
+#currentSectionName {
+    color: rgb(63, 0, 146);
+}
+
+#deathCounterText {
+    right:1%;
+    display: inline;
+    font-size: x-large;
+    position: absolute;
 }
 
 #showChoiceColours:hover {
@@ -46,8 +78,50 @@
     display: inline-block;
     margin-top: 10px;
     border-style: solid;
+    border-width: 2px;
     margin-right: auto;
     padding: 10px;
+    background-color: rgb(85, 97, 109);
+}
+
+.defaultResponse {
+    list-style: none;
+    padding: 3px;
+    font-size: larger;
+    overflow:hidden;
+    background-color: rgb(194, 194, 194);
+    transition: 0.25s;
+
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.defaultResponse:nth-child(2n) {
+    background-color: whitesmoke;
+}
+
+.defaultResponse:hover {
+    background-color: rgb(142, 191, 255);
+}
+
+.defaultResponse:active {
+    background-color: rgb(74, 153, 255);
+}
+
+#defaultResponses {
+    overflow-y: scroll;
+    height: 150;
+    padding-left: 0;
+}
+
+#customOverlay p {
+    font-size: large;
 }
 
 #overlayInput {
@@ -76,13 +150,14 @@
     bottom: 5px;
     padding: 10px;
     font-size: large;
-    background-color: rgb(177, 0, 0);
-    color: floralwhite;
+    background-color: rgb(126, 0, 0);
     transition: 0.25s;
+    border-style: solid;
+    border-color: black;
 }
 
 #resetAll:hover {
-    background-color: rgb(124, 0, 0);
+    background-color: rgb(71, 0, 0);
 }
 
 #setColor {

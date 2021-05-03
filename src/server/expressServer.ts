@@ -36,7 +36,7 @@ export default class ExpressServer {
             })
 
             socket.on("getCurrentSceneName", (callback) => {
-                callback(this.main.SceneTracker.currentScene.sceneName)
+                callback(this.main.SceneTracker.overlayText.current, this.main.SceneTracker.currentScene.sceneName)
             })
 
             socket.on("sceneSelect", (sceneName: string) => {
@@ -77,16 +77,18 @@ export default class ExpressServer {
         });
     }
 
-    emitCurrentSceneName(sceneName: string) {
-        this.io?.emit("currentSceneName", sceneName)
+    emitCurrentSceneName(sectionName: string, sceneName: string) {
+        this.io?.emit("currentSceneName", sectionName, sceneName)
     }
 
-    emitSceneOptions(sceneNames: Array<string>) {
+    emitSceneOptions(sceneNames: Array<string>): ExpressServer {
         if (sceneNames.length === 0) {
-            this.io?.emit("sceneNameOptions", ["Return To Start"])
+            this.io?.emit("sceneNameOptions", ["Better Luck Next Time!"])
         } else {
             this.io?.emit("sceneNameOptions", sceneNames)
         }
+
+        return this;
     }
 
     emitColourEvent(objectID: string, newColour: string): ExpressServer {
@@ -97,6 +99,12 @@ export default class ExpressServer {
 
     emitNewOverlayText(text: string): ExpressServer {
         this.io?.emit("overlayUpdate", text);
+
+        return this;
+    }
+
+    emitDeathInteger(int: number): ExpressServer {
+        this.io?.emit("deathCount", int);
 
         return this;
     }

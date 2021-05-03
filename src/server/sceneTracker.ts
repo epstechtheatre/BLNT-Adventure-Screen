@@ -15,6 +15,7 @@ export default class SceneTracker {
     main: Main
     colouring: {[objectID: string]: {value: string, was?: string}} = {}
     overlayText: {current: string, default: string}
+    private deathCount: number
 
     constructor(main: Main, data: Scene, defaultOverlayText: string = "Better Luck Next Time") {
         this.main = main;
@@ -24,6 +25,7 @@ export default class SceneTracker {
             default: defaultOverlayText,
             current: defaultOverlayText
         }
+        this.deathCount = 0
 
         //Set the colour and data for the first scene
         this.setSceneColour(this.currentScene, colours.CurrentScene);
@@ -33,6 +35,22 @@ export default class SceneTracker {
         } else {
             this.main.Express.emitNewOverlayText(this.overlayText.current);
         }
+    }
+
+    incrementDeath(reset = false) {
+        if (!reset) {
+            this.deathCount++
+        } else {
+            this.deathCount = 0;
+        }
+
+        this.main.Express.emitDeathInteger(this.deathCount);
+    }
+
+    getDeathCount() {
+        this.main.Express.emitDeathInteger(this.deathCount);
+
+        return;
     }
 
     sendCurrentSceneChoices(): void {
@@ -59,6 +77,8 @@ export default class SceneTracker {
             this.setSceneColour(this.currentScene, colours.TerminatingScene);
             this.currentScene = this.data;
             this.setSceneColour(this.currentScene, colours.CurrentScene)
+
+            this.incrementDeath();
 
         } else {
             const children = this.currentScene.children        
@@ -91,12 +111,13 @@ export default class SceneTracker {
             this.currentScene = found;
 
         }
-        this.sendCurrentSceneChoices();
-        this.main.Express.emitCurrentSceneName(this.currentScene.sceneName);
-
+        
         if (this.currentScene.overlayTitle) {
             this.setCurrentOverlayText(this.currentScene.overlayTitle);
         }
+        
+        this.sendCurrentSceneChoices();
+        this.main.Express.emitCurrentSceneName(this.overlayText.current, this.currentScene.sceneName);
 
         return this.currentScene;
     }
@@ -122,6 +143,11 @@ export default class SceneTracker {
         } else {
             this.defaultOverlayText();
         }
+
+        //Update the sceneName
+        this.main.Express.emitCurrentSceneName(this.overlayText.current, this.currentScene.sceneName)
+
+        this.incrementDeath(true);
     }
 
     synchronize() {
@@ -135,8 +161,9 @@ export default class SceneTracker {
         this.sendCurrentSceneChoices()
 
         //Update the overlay text
-
         this.main.Express.emitNewOverlayText(this.overlayText.current)
+
+        this.getDeathCount()
 
     }
 

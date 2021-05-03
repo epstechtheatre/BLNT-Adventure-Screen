@@ -12,21 +12,28 @@
     </style>
   </head>
   <body>
-    <p id="currentSceneText">
-      Current Scene:
-      <b id="currentSceneName">
-        LOADING...
-      </b>
-    </p>
+    <div id="header">
+      <p id="currentSceneText">
+        Current Scene:
+        <b id="currentSectionName">LOADING</b> ⇨
+        <b id="currentSceneName">LOADING...</b>
+      </p>
+      <p id="deathCounterText">
+        Death Counter:
+        <b id="deathCounterInt">
+          ???
+        </b>
+      </p>
+    </div>
 
     <div id="nextSceneOptionsHolder">
     </div>
 
-    <object type="image/svg+xml" data="./images/svg/flowchart.svg" id=svg_render></object>
+    <object type="image/svg+xml" data="./images/svg/flowchart-obfuscated-text.svg" id=svg_render></object>
 
     <div id="controlButtons">
       <button id="showChoiceColours" class="controlButton">Colour Next Scenes</button>
-      <button id="undo" class="controlButton">Undo</button>
+      <!-- <button id="undo" class="controlButton">Undo</button> -->
     </div>
     
     <div id="customOverlay">
@@ -35,6 +42,16 @@
         <input type="text" id="overlayInput" placeholder="Enter Overlay Text (Case Sensitive)" maxlength="35" size=50>
         <button id="overlaySend">Send</button>
       </form>
+
+      <p>Premade responses: (click to paste)</p>
+      <ul id="defaultResponses">
+        <li class="defaultResponse">Better Start at 7:30pm</li>
+        <li class="defaultResponse">Better Luck Next Time</li>
+        <li class="defaultResponse">Better Keep Your Microphone Off</li>
+        <li class="defaultResponse">Better Go To The Rec Center</li>
+        <li class="defaultResponse">Hell</li>
+        <li class="defaultResponse">Heaven</li>
+      </ul>
     </div>
 
     <div id="setColor">
@@ -58,7 +75,8 @@
 
         socket.emit("synchronize")
 
-        socket.emit("getCurrentSceneName", (sceneName) => {
+        socket.emit("getCurrentSceneName", (sectionName, sceneName) => {
+          document.getElementById("currentSectionName").textContent = sectionName;
           document.getElementById("currentSceneName").textContent = sceneName;
         })
         document.getElementById("showChoiceColours").addEventListener("click", () => {
@@ -69,6 +87,12 @@
             socket.emit("reset")
           }
         })
+        for (let i = 0; i<document.getElementsByClassName("defaultResponse").length;i++) {
+          document.getElementsByClassName("defaultResponse").item(i).addEventListener("click", () => {
+            document.getElementById("overlayInput").value = document.getElementsByClassName("defaultResponse").item(i).innerHTML
+          })
+        }
+
         document.getElementById("overlaySend").addEventListener("click", (e) => {
           e.preventDefault();
           
@@ -83,14 +107,20 @@
             document.getElementById("overlayInput").value = "";
           }
         })
+
         document.getElementById("red").addEventListener("click", () => {
           if (confirm("Are you sure? This will recolour all active boxes to be red.")) {
             socket.emit("recolourAll", "red")
           }
         })
 
-        socket.on("currentSceneName", (sceneName) => {
-          document.getElementById("currentSceneName").textContent = sceneName;
+        socket.on("currentSceneName", (sectionName, sceneName) => {
+          document.getElementById("currentSectionName").textContent = sectionName;
+          document.getElementById("currentSceneName").textContent = sceneName;        
+        })
+
+        socket.on("deathCount", (int) => {
+          document.getElementById("deathCounterInt").textContent = int
         })
 
 
