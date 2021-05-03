@@ -15,7 +15,7 @@
     <div id="header">
       <p id="currentSceneText">
         Current Scene:
-        <b id="currentSectionName">LOADING</b> ⇨
+        <b id="currentSectionName">LOADING</b> →
         <b id="currentSceneName">LOADING...</b>
       </p>
       <p id="deathCounterText">
@@ -47,7 +47,11 @@
       <ul id="defaultResponses">
         <li class="defaultResponse">Better Start at 7:30pm</li>
         <li class="defaultResponse">Better Luck Next Time</li>
+        <li class="defaultResponse">Better Luck Next Death</li>
         <li class="defaultResponse">Better Keep Your Microphone Off</li>
+        <li class="defaultResponse">Better Not Use The Chat</li>
+        <li class="defaultResponse">Better Follow This Good Advice</li>
+        <li class="defaultResponse">Better Hold For Technical Issues</li>
         <li class="defaultResponse">Better Go To The Rec Center</li>
         <li class="defaultResponse">Hell</li>
         <li class="defaultResponse">Heaven</li>
@@ -90,6 +94,9 @@
         for (let i = 0; i<document.getElementsByClassName("defaultResponse").length;i++) {
           document.getElementsByClassName("defaultResponse").item(i).addEventListener("click", () => {
             document.getElementById("overlayInput").value = document.getElementsByClassName("defaultResponse").item(i).innerHTML
+          })
+          document.getElementsByClassName("defaultResponse").item(i).addEventListener("dblclick", () => {
+            document.getElementById("overlaySend").click()
           })
         }
 

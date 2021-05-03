@@ -8,9 +8,6 @@
     /* font-weight: bold; */
 }
 
-/* #currentSceneText {
-    padding-bottom: 3px;
-} */
 
 #nextSceneOptionsHolder {
     padding-top: 3px;
@@ -68,6 +65,27 @@ body {
     display: inline;
     font-size: x-large;
     position: absolute;
+}
+
+@media (max-width: 800px) {
+    #currentSceneText {
+        font-size: x-large;
+        display: block;
+        left:unset;
+        clear:both;
+    }
+
+    #deathCounterText {
+        display: block;
+        position: unset;
+        right: unset;
+        clear:both;
+        border-left: solid;
+        border-width: 1px;
+        border-color: rgb(74, 109, 119);
+        margin-left: 9px;
+        padding-left: 9px;
+    }
 }
 
 #showChoiceColours:hover {

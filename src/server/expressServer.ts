@@ -83,11 +83,10 @@ export default class ExpressServer {
 
     emitSceneOptions(sceneNames: Array<string>): ExpressServer {
         if (sceneNames.length === 0) {
-            this.io?.emit("sceneNameOptions", ["Better Luck Next Time!"])
+            this.io?.emit("sceneNameOptions", ["Better Luck Next Time! (Return to Start)"])
         } else {
             this.io?.emit("sceneNameOptions", sceneNames)
         }
-
         return this;
     }
 

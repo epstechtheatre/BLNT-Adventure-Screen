@@ -44,6 +44,10 @@ export default class SceneTracker {
             this.deathCount = 0;
         }
 
+        if (this.deathCount >= 5) {
+            this.data.overlayTitle = "Better Luck Next Death";
+        }
+
         this.main.Express.emitDeathInteger(this.deathCount);
     }
 
@@ -74,11 +78,13 @@ export default class SceneTracker {
     gotoNextScene(sceneName: string): Scene {
         //If the scene has no children, we should go back to the start
         if (!this.currentScene.children || this.currentScene.children.length === 0) {
+            this.incrementDeath();
+
+
             this.setSceneColour(this.currentScene, colours.TerminatingScene);
             this.currentScene = this.data;
             this.setSceneColour(this.currentScene, colours.CurrentScene)
 
-            this.incrementDeath();
 
         } else {
             const children = this.currentScene.children        
@@ -133,6 +139,7 @@ export default class SceneTracker {
             this.main.Express.emitColourEvent(objectID, colours.ResetColour);
         }
         this.colouring = {};
+        this.data.overlayTitle = this.overlayText.default
 
         this.currentScene = this.data;
         this.sendCurrentSceneChoices();
@@ -146,6 +153,7 @@ export default class SceneTracker {
 
         //Update the sceneName
         this.main.Express.emitCurrentSceneName(this.overlayText.current, this.currentScene.sceneName)
+
 
         this.incrementDeath(true);
     }
