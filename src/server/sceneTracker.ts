@@ -135,6 +135,8 @@ export default class SceneTracker {
     }
 
     reset() {
+        this.main.Express.emitColourWipe(colours.ResetColour)
+
         for (const objectID in this.colouring) {
             this.main.Express.emitColourEvent(objectID, colours.ResetColour);
         }
@@ -153,7 +155,6 @@ export default class SceneTracker {
 
         //Update the sceneName
         this.main.Express.emitCurrentSceneName(this.overlayText.current, this.currentScene.sceneName)
-
 
         this.incrementDeath(true);
     }
@@ -175,11 +176,15 @@ export default class SceneTracker {
 
     }
 
-    recolourAll(colour: "red"): void {
+    recolour(colour: "red" | "crystal"): void {
         for (const entry in this.colouring) {
             switch (colour) {
                 case "red":
                     this.colouring[entry].value = colours.TerminatingScene
+                    break;
+
+                case "crystal":
+                    this.colouring[entry].value = "#bae6e7"
                     break;
 
                 default:

@@ -35,6 +35,17 @@
           }
         })
 
+        socket.on("colourWipe", (colour) => {
+          const shapes = document.getElementById("svg_render").contentDocument.documentElement.getElementsByTagName("rect")
+
+          for (const item of shapes) {
+            if (!(item.id === "overlayTextBacking")) {
+              item.style["transition"] = "1s"
+              item.style["fill"] = colour
+            }
+          }
+        })
+
         setTimeout(() => {
           socket.emit("synchronize")
         }, 400);

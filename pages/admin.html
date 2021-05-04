@@ -53,14 +53,18 @@
         <li class="defaultResponse">Better Follow This Good Advice</li>
         <li class="defaultResponse">Better Hold For Technical Issues</li>
         <li class="defaultResponse">Better Go To The Rec Center</li>
+        <li class="defaultResponse">Better Hide The Evidence</li>
         <li class="defaultResponse">Hell</li>
         <li class="defaultResponse">Heaven</li>
       </ul>
     </div>
 
     <div id="setColor">
-      <p>Colour All Active Boxes</p>
+      <p>Recolouring</p>
       <button id="red" class="colourButton">Red</button>
+      <button id="crystal" class="colourButton">Crystal</button>
+      <input id="affectAll" type="checkbox">Colour <b>ALL</b> boxes
+
     </div>
 
     <button id="resetAll" class="systemButton">Reset All</button>
@@ -116,8 +120,26 @@
         })
 
         document.getElementById("red").addEventListener("click", () => {
-          if (confirm("Are you sure? This will recolour all active boxes to be red.")) {
-            socket.emit("recolourAll", "red")
+          if (document.getElementById("affectAll").checked === true) {
+            if (confirm("Are you sure? This will recolour EVERY SINGLE box to be red.")) {
+              socket.emit("recolour", "red", true)
+            }
+          } else {
+            if (confirm("Are you sure? This will recolour all active boxes to be red.")) {
+              socket.emit("recolour", "red")
+            }
+          }
+        })
+
+        document.getElementById("crystal").addEventListener("click", () => {
+          if (document.getElementById("affectAll").checked === true) {
+            if (confirm("Are you sure? This will recolour EVERY SINGLE box to be crystal.")) {
+              socket.emit("recolour", "crystal", true)
+            }
+          } else {
+            if (confirm("Are you sure? This will recolour all active boxes to be crystal.")) {
+              socket.emit("recolour", "crystal")
+            }
           }
         })
 
@@ -157,6 +179,17 @@
           if (selectedShape) {
             selectedShape.style["transition"] = "0.5s"
             selectedShape.style["fill"] = colour
+          }
+        })
+
+        socket.on("colourWipe", (colour) => {
+          const shapes = document.getElementById("svg_render").contentDocument.documentElement.getElementsByTagName("rect")
+
+          for (const item of shapes) {
+            if (!(item.id === "overlayTextBacking")) {
+              item.style["transition"] = "1s"
+              item.style["fill"] = colour
+            }
           }
         })
 

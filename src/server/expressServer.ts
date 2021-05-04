@@ -4,7 +4,6 @@ import basicAuth from "express-basic-auth"
 import {Server} from "socket.io";
 import { Main } from ".";
 import { SceneNameNotFoundError } from "./customErrors";
-import fs from "fs"
 
 export default class ExpressServer {
     main: Main
@@ -64,10 +63,30 @@ export default class ExpressServer {
             })
             socket.on("customOverlay", (customOverlay) => {
                 console.log(`Custom overlay ${customOverlay}`)
+                this.main.SceneTracker.overlayText.current = customOverlay
                 this.emitNewOverlayText(customOverlay);
             })
-            socket.on("recolourAll", (colour: string) => {
-                this.main.SceneTracker.recolourAll((colour as "red"))
+            socket.on("recolour", (colour: string, recolourAll: boolean = false) => {
+                if (recolourAll) {
+                    let rgb = ""
+
+                    switch (colour) {
+                        case "crystal":
+                            rgb = "#bae6e7"
+                            break;
+
+                        case "red":
+                            rgb = "#770000";
+                            break;
+
+                        default:
+                            rgb = colour;
+                    }
+
+                    this.emitColourWipe(rgb)
+                } else {
+                    this.main.SceneTracker.recolour((colour as "red" | "crystal"))
+                }
             })
 
             socket.on("reset", () => {
@@ -92,6 +111,12 @@ export default class ExpressServer {
 
     emitColourEvent(objectID: string, newColour: string): ExpressServer {
         this.io?.emit("colourUpdate", objectID, newColour);
+
+        return this;
+    }
+
+    emitColourWipe(newColour: string): ExpressServer {
+        this.io?.emit("colourWipe", newColour);
 
         return this;
     }
