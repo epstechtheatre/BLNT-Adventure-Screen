@@ -6,4 +6,6 @@ This project was co-authored by [Ben MacDonald](https://github.com/Quantum158) i
 ## Timeline
 - [x] April 21st - Functional Mockup Due
 - [x] April 28th - Go / No Go
-- [ ] May 4th    - Final Changes
+- [x] May 4th    - Final Changes
+- [x] May 5th    - Performance 1
+- [x] May 6th    - Performance 2 
